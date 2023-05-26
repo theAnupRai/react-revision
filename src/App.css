@@ -1,0 +1,15 @@
+.App{
+    background-color: #333;
+    width: 100vw;
+    height: 500vh;
+}
+
+.cover{
+    display: flex;
+}
+
+.app-btn{
+    display: flex;
+    gap: 15px;
+    margin-left: auto;
+}

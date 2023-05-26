@@ -1,0 +1,26 @@
+.container{
+    width: 500px;
+    margin: 0 0.2em;
+    /* float: left; */
+}
+
+.pic img{
+    width: 100%;
+}
+
+.title{
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    color: white;
+    font-size: x-large;
+}
+
+.channel, .view{
+    font-size: small;
+    color: #ccc;
+    margin-bottom: 0.2em;
+}
+
+.view span{
+    padding: 0 0.5em;
+}
