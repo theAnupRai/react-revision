@@ -3,6 +3,9 @@ import thumb1 from "../assets/thumb.png";
 import "./Video.css";
 
 const Video = ({ title, channel=AcadWin, view, time, verified, children }) => {
+
+  // console.log("3");
+
   return (
     <div className="container">
       <div className="pic">

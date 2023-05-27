@@ -1,4 +1,4 @@
-const videos = [
+const videosData = [
     {
       title: "Vlogging Day 1",
       time: "3 Months",
@@ -17,4 +17,4 @@ const videos = [
     }];
 
 
-    export default videos;
+    export default videosData;

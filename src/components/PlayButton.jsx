@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 
 const playButton = ({children, onPlay, onPause}) => {
 
+  // console.log("2");
+
   const [play, setPlay] = useState(false);
 
   function clickHandle() {

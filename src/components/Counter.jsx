@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo, memo } from 'react'
 
-const Counter = () => {
+const Counter = memo(()=>{
+  
     const [number, setNumber] = useState(0);
 
     console.log("Counter");
@@ -18,11 +19,12 @@ const Counter = () => {
     }
   return (
     <div>
+        <h2>New Topic</h2>
         <button className='btn margin' onClick={clickHandler} >Click me</button>
         <button className='margin'><span>{number}</span></button>
     </div>
   )
-}
+})
 
 export default Counter
 

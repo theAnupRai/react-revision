@@ -6,6 +6,7 @@
 
 .cover{
     display: flex;
+    flex-wrap: wrap;
 }
 
 .app-btn{
