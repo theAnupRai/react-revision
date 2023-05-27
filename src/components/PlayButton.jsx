@@ -12,7 +12,7 @@ const playButton = ({children, onPlay, onPause}) => {
         
   return (
     <div>
-        <button className='btn' onClick={clickHandle} >{children} : {play ? '>||' : '||'} </button>
+        <button className='btn' onClick={clickHandle} >{children} : {play ? '⏯️' : '⏸️'} </button>
     </div>
   )
 }
