@@ -1,10 +1,9 @@
-import Video from "./components/Video";
 import "./App.css";
 import videosData from "./data/data";
-import PlayButton from "./components/playButton";
 import Counter from "./components/Counter";
 import { useState } from "react";
 import AddVideos from "./components/AddVideos";
+import VideosList from "./components/VideosList";
 
 // function App() {
 //   const obj = {
@@ -34,6 +33,7 @@ import AddVideos from "./components/AddVideos";
 // OR
 
 function App() {
+
   const [videos, setVideos] = useState(videosData);
 
   function okVideos(video) {
@@ -44,28 +44,7 @@ function App() {
     <div className="App">
       <h1>AcadWin Videos</h1>
 
-      <div className="cover">
-        {videos.map((video) => (
-          <Video
-            key={video.id}
-            id={video.id}
-            title={video.title}
-            view={video.view}
-            time={video.time}
-            channel={video.channel}
-            verified={video.verified}
-          >
-            <div className="app-btn">
-              <PlayButton
-                onPlay={() => console.log("playing:", video.title)}
-                onPause={() => console.log("Pause:", video.title)}
-              >
-                {video.title}
-              </PlayButton>
-            </div>
-          </Video>
-        ))}
-      </div>
+      <VideosList videos={videos} ></VideosList>
 
       <Counter></Counter>
 

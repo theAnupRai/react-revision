@@ -8,7 +8,7 @@ const AddVideos = ({okVideos}) => {
         channel:"AcadWin",
         views:'',
         title:''
-    }
+    };
 
     const [video, setVideo] = useState(initialState);
 

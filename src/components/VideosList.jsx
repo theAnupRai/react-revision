@@ -1,8 +1,33 @@
 import React from 'react'
+import Video from './Video';
+// import VideosData from '../data/data';
+import PlayButton from './playButton';
 
-const VideosList = () => {
+const VideosList = ({videos}) => {
+
   return (
-    <div>VideosList</div>
+      <div className="cover">
+        {videos.map((video) => (
+          <Video
+            key={video.id}
+            id={video.id}
+            title={video.title}
+            view={video.view}
+            time={video.time}
+            channel={video.channel}
+            verified={video.verified}
+          >
+            <div className="app-btn">
+              <PlayButton
+                onPlay={() => console.log("playing:", video.title)}
+                onPause={() => console.log("Pause:", video.title)}
+              >
+                {video.title}
+              </PlayButton>
+            </div>
+          </Video>
+        ))}
+      </div>
   )
 }
 
