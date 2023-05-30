@@ -1,7 +1,7 @@
 import "./App.css";
 import videosData from "./data/data";
 import Counter from "./components/Counter";
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import AddVideos from "./components/AddVideos";
 import VideosList from "./components/VideosList";
 
@@ -34,23 +34,67 @@ import VideosList from "./components/VideosList";
 
 function App() {
 
-  const [videos, setVideos] = useState(videosData);
+  const [editableVideos, setEditableVideos] = useState(null);
+
+  // Reducer Start 
+  const videoReducer = (videos, action) => {
+    switch (action.type) {
+      case "ADD":
+        return [...videos, { ...action.payload, id: videos.lemgth + 1 }];
+
+      case "DELETE":
+        return videos.filter((video) => video.id !== action.payload);
+
+      case "UPDATE":
+        const index = videos.findIndex((v) => v.id === action.payload.id);
+        const newVideos = [...videos];
+        newVideos.splice(index, 1, action.payload);
+        setEditableVideos(null);  // because empty input box : Not recomended
+        return newVideos
+
+      default:
+        return videos;
+    }
+  };
+  const [videos, dispatch] = useReducer(videoReducer, videosData);
+
+  // const [videos, setVideos] = useState(videosData);
 
   function okVideos(video) {
-    setVideos([...videos, { ...video, id: videos.length + 1 }]);
+    dispatch({type:'ADD', payload:video})
+    // setVideos([...videos, { ...video, id: videos.length + 1 }]);
+  };
+
+  function deleteVideos(id) {
+    dispatch({type:'DELETE', payload:id})
+    // setVideos(videos.filter((video)=>video.id!==id));
+  };
+
+  function editVideos(id) {
+    // dispatch({type:'EDIT', payload:id})
+    setEditableVideos(videos.find((video)=>video.id===id));
+  };
+
+  function updateVideos(video) {
+    // dispatch({type:'UPDATE', payload:video})
+    // const index = videos.findIndex((v)=>v.id===video.id);
+    // const newVideos = [...videos];
+    // newVideos.splice(index, 1, video);
+    // setVideos(newVideos);
   }
+
 
   return (
     <div className="App">
       <h1>AcadWin Videos</h1>
 
-      <VideosList videos={videos} ></VideosList>
+      <VideosList editVideos={editVideos} dispatch={dispatch} videos={videos} ></VideosList>
 
-      <Counter></Counter>
+      {/* <Counter></Counter> */}
 
       <div>
         {/* Note : (new topic) how to upload new video through button */}
-        <button
+        {/* <button
           className="btn margin"
           onClick={() => {
             setVideos([
@@ -67,10 +111,11 @@ function App() {
           }}
         >
           Add Videos
-        </button>
+        </button> */}
       </div>
 
-      <AddVideos okVideos={okVideos}></AddVideos>
+      <AddVideos editableVideos={editableVideos} dispatch={dispatch} ></AddVideos>
+
     </div>
   );
 }

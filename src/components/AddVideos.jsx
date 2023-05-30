@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-const AddVideos = ({okVideos}) => {
+const AddVideos = ({okVideos, updateVideos,dispatch, editableVideos}) => {
 
     const initialState = {
         time:"2 Months",
         verified:true,
         channel:"AcadWin",
-        views:'',
+        view:'',
         title:''
     };
 
@@ -14,7 +14,13 @@ const AddVideos = ({okVideos}) => {
 
     function submitHandle(e){
         e.preventDefault();
-        okVideos(video);
+        if(editableVideos){
+            // updateVideos(video);
+            dispatch({type:'ADD', payload:video})
+        } else{
+            // okVideos(video);
+            dispatch({type:'ADD', payload:video})
+        }
         setVideo(initialState);
     };
 
@@ -23,13 +29,19 @@ const AddVideos = ({okVideos}) => {
         [event.target.name] : event.target.value})
     };
 
+    useEffect( () =>{
+        if(editableVideos){
+            setVideo(editableVideos);
+        }
+    }, [editableVideos]);
+
   return (
     <div>
         <form action="#">
             <input className='margin' value={video.title} name='title' type="text" onChange={changeHandle} placeholder='title' />
-            <input className='margin' value={video.views} name='views' type="text" onChange={changeHandle} placeholder='views' />
+            <input className='margin' value={video.view} name='view' type="text" onChange={changeHandle} placeholder='view' />
             <button className='btn margin' onClick={submitHandle}>
-                Add
+                {editableVideos? 'Edit' : 'Add'}
             </button>
         </form>
     </div>

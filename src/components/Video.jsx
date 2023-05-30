@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import thumb1 from "../assets/thumb.png";
 import "./Video.css";
 
-const Video = ({ title, channel=AcadWin, view, time, verified, children }) => {
+const Video = ({ title, id, channel=AcadWin, view, time, verified, children, deleteVideos, editVideos, dispatch }) => {
 
   // console.log("3");
 
   return (
     <div className="container">
+      <button className="cross"  onClick={() =>dispatch({type:'DELETE', payload:id})}>X</button>
+      <button className="edit"  onClick={() =>editVideos(id)}>Edit</button>
       <div className="pic">
         <img src={thumb1} alt="image" />
       </div>

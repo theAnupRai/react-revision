@@ -3,7 +3,7 @@ import Video from './Video';
 // import VideosData from '../data/data';
 import PlayButton from './playButton';
 
-const VideosList = ({videos}) => {
+const VideosList = ({videos, deleteVideos, dispatch,editVideos}) => {
 
   return (
       <div className="cover">
@@ -16,6 +16,9 @@ const VideosList = ({videos}) => {
             time={video.time}
             channel={video.channel}
             verified={video.verified}
+            // deleteVideos={deleteVideos}
+            dispatch={dispatch}
+            editVideos={editVideos}
           >
             <div className="app-btn">
               <PlayButton
