@@ -1,6 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+// import VideoDispatchContext from '../context/VideoDispatchContext';
+import useVideoDispatch from '../hooks/VideoDispatch';
 
-const AddVideos = ({okVideos, updateVideos,dispatch, editableVideos}) => {
+const AddVideos = ({editableVideos}) => {
+
+    // const dispatch = useContext(VideoDispatchContext);
+    const dispatch = useVideoDispatch();  //we call our custom hooks
 
     const initialState = {
         time:"2 Months",

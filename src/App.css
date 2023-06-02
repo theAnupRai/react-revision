@@ -1,5 +1,4 @@
 .App{
-    background-color: #333;
     width: 100vw;
     height: 500vh;
 }
@@ -13,4 +12,12 @@
     display: flex;
     gap: 15px;
     margin-left: auto;
+}
+
+.darkMode{
+    background-color: #333;
+}
+
+.lightMode{
+    background-color: #767272;
 }

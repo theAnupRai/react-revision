@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Video from './Video';
 // import VideosData from '../data/data';
 import PlayButton from './playButton';
+import VideosContext from '../context/VideosContext';
 
-const VideosList = ({videos, deleteVideos, dispatch,editVideos}) => {
+const VideosList = ({editVideos}) => {
+
+  const videos = useContext(VideosContext)
 
   return (
       <div className="cover">
@@ -17,7 +20,7 @@ const VideosList = ({videos, deleteVideos, dispatch,editVideos}) => {
             channel={video.channel}
             verified={video.verified}
             // deleteVideos={deleteVideos}
-            dispatch={dispatch}
+            // dispatch={dispatch}
             editVideos={editVideos}
           >
             <div className="app-btn">

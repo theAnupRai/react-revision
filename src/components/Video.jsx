@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import thumb1 from "../assets/thumb.png";
 import "./Video.css";
+// import VideoDispatchContext from "../context/VideoDispatchContext";
 
-const Video = ({ title, id, channel=AcadWin, view, time, verified, children, deleteVideos, editVideos, dispatch }) => {
+const Video = ({ title, id, channel=AcadWin, view, time, verified, children, deleteVideos, editVideos }) => {
 
   // console.log("3");
+
+  // const dispatch = useContext(VideoDispatchContext);
+  const dispatch = useVideoDispatch();  //we call our custom hooks
 
   return (
     <div className="container">
