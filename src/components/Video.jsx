@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import thumb1 from "../assets/thumb.png";
 import "./Video.css";
 // import VideoDispatchContext from "../context/VideoDispatchContext";
+import useVideoDispatch from "../hooks/VideoDispatch";
 
 const Video = ({ title, id, channel=AcadWin, view, time, verified, children, deleteVideos, editVideos }) => {
 

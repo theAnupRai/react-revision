@@ -113,7 +113,7 @@ function App() {
               // videos={videos}
             ></VideosList>
 
-            {/* <Counter></Counter> */}
+            <Counter></Counter>
 
             <div>
               {/* Note : (new topic) how to upload new video through button */}
